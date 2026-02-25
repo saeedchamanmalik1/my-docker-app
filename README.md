@@ -25,8 +25,8 @@ Goal: Avoid ICMP + extremely slow scan
 
 Commands:
 
-nmap -Pn -sn -T0 <target_network>
-nmap -Pn -sS -T0 <vulnerable_machine_ip>
+((nmap -Pn -sn -T0 <target_network>
+nmap -Pn -sS -T0 <vulnerable_machine_ip>))
 
 
 Why this works:
@@ -43,7 +43,7 @@ Q2. Incident Response Constraint
 
 Fastest possible scan (2 minutes):
 
-nmap -T5 -F <vulnerable_machine_ip>
+((nmap -T5 -F <vulnerable_machine_ip>))
 
 
 Why it’s noisy:
@@ -58,7 +58,7 @@ Q3. Evidence Collection Case
 
 Command:
 
-nmap <vulnerable_machine_ip> -oA evidence_scan
+((nmap <vulnerable_machine_ip> -oA evidence_scan))
 
 
 Files generated:
@@ -73,7 +73,7 @@ Q4. Blue Team Restriction
 
 Disable DNS + balanced speed:
 
-nmap -n -T3 <vulnerable_machine_ip>
+((nmap -n -T3 <vulnerable_machine_ip>))
 
 
 Why:
@@ -86,24 +86,24 @@ Q5. Forensic Analysis Task
 
 Machine-readable XML only:
 
-nmap scanme.nmap.org -oX scanme.xml
+((nmap scanme.nmap.org -oX scanme.xml))
 
 Q6. Classroom Lab Challenge
 
 Live hosts only + moderate speed:
 
-nmap -sn -T3 192.168.56.0/24 -oN live_hosts.txt
+((nmap -sn -T3 192.168.56.0/24 -oN live_hosts.txt))
 
 Q7. Stealth vs Speed Comparison
 
 Stealth scan:
 
-nmap -sS -T1 <vulnerable_machine_ip>
+((nmap -sS -T1 <vulnerable_machine_ip>))
 
 
 Very fast scan:
 
-nmap -sS -T5 <vulnerable_machine_ip>
+((nmap -sS -T5 <vulnerable_machine_ip>))
 
 
 Detection risk difference:
@@ -116,13 +116,13 @@ Q8. Logging Failure Scenario
 
 Redo scan + save output:
 
-nmap <vulnerable_machine_ip> -oN result.txt
+((nmap <vulnerable_machine_ip> -oN result.txt))
 
 Q9. Real-World Penetration Test
 
 One command fulfilling all requirements:
 
-nmap -T4 -n -oA pentest_scan <vulnerable_machine_ip>
+((nmap -T4 -n -oA pentest_scan <vulnerable_machine_ip>))
 
 Q10. Trick Question (Viva Favorite)
 
